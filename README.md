@@ -516,30 +516,6 @@ This repository demonstrates modern testing strategies used for validating distr
 • Robust execution strategies including retries, timeouts, structured logging, and error handling
 
 ---
-## Technology Stack
-
-Automation
-• Playwright  
-• Jest  
-• TypeScript  
-
-API Testing
-• Axios  
-• Joi schema validation  
-
-Messaging
-• Kafka event testing  
-
-Performance
-• k6 load testing  
-
-Infrastructure
-• Docker  
-• Kubernetes  
-
-CI/CD
-• GitHub Actions
----
 ## Contributing
 
 Contributions are welcome.

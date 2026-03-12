@@ -494,4 +494,3 @@ MIT License
 
 ---
 
-> 💡 **Pro Tip:** This README focuses entirely on testing practices and framework architecture—exactly what employers want to see from an SDET candidate!

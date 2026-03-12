@@ -4,7 +4,9 @@
 [![License](https://img.shields.io/github/license/yourusername/yourrepo)](LICENSE)
 [![Coverage Status](https://img.shields.io/badge/coverage-85%25-brightgreen.svg)](https://github.com/yourusername/yourrepo)
 
-A **production-grade automation testing framework** demonstrating advanced quality assurance engineering practices. Built with **Playwright**, **Jest**, **k6**, and **TypeScript** — suitable for **Staff QA/Principal SDET** roles at top tech companies.
+A production-grade automation testing framework demonstrating advanced quality engineering practices for modern distributed systems.
+
+Built with Playwright, Jest, k6, and TypeScript.
 
 **🎯 What This Showcases:**
 - ✅ Advanced Page Object Model (POM) patterns

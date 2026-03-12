@@ -7,129 +7,6 @@
 A production-grade automation testing framework demonstrating advanced quality engineering practices for modern distributed systems.
 
 Built with Playwright, Jest, k6, and TypeScript.
-
----
-
-## System Architecture
-
-The test automation platform validates a distributed system consisting of frontend UI, backend APIs, Kafka event streams, and observability infrastructure. The framework implements seven distinct testing layers that work together to ensure comprehensive system validation.
-
-```mermaid
-graph TB
-    subgraph "System Under Test"
-        UI["🖥️ Frontend UI<br/>React / Vue"]
-        API["🔗 API Services<br/>REST / GraphQL"]
-        KAFKA["📨 Kafka Events<br/>Event Streams"]
-        DB[(Database)]
-        
-        UI -->|API Calls| API
-        API -->|Publish Events| KAFKA
-        API -->|Read/Write| DB
-    end
-    
-    subgraph "Observability Stack"
-        PROM["📊 Prometheus<br/>Metrics"]
-        LOGS["📝 Logs<br/>ELK Stack"]
-        TRACE["🔍 Traces<br/>Jaeger / Tempo"]
-        
-        API -->|Metrics| PROM
-        API -->|Logs| LOGS
-        API -->|Traces| TRACE
-    end
-    
-    subgraph "Test Automation Platform"
-        subgraph "Test Layers"
-            UITest["🎭 UI Automation<br/>Playwright<br/>Page Object Model"]
-            APITest["✅ API Testing<br/>Jest + Axios<br/>Contract Validation"]
-            EventTest["⚡ Event Testing<br/>Kafka<br/>Message Validation"]
-            SecTest["🔒 Security Testing<br/>Injection Detection<br/>Auth Validation"]
-            PerfTest["⚡ Performance Testing<br/>k6<br/>Load Scenarios"]
-            ChaosTest["💥 Chaos Testing<br/>Failure Injection<br/>Resilience Checks"]
-            ObsTest["📈 Observability<br/>SLO Validation<br/>Metrics Assertion"]
-        end
-        
-        subgraph "Framework Components"
-            POM["Page Objects<br/>Reusable Selectors"]
-            APIClient["API Client<br/>Request/Response<br/>Auto-Validation"]
-            Schemas["Contract Schemas<br/>Joi Validation<br/>Event Contracts"]
-            Fixtures["Test Fixtures<br/>Test Data<br/>Generators"]
-            Utils["Utilities<br/>Retry Logic<br/>Async Helpers<br/>Logger"]
-        end
-        
-        UITest -.->|Uses| POM
-        APITest -.->|Uses| APIClient
-        APITest -.->|Validates| Schemas
-        EventTest -.->|Uses| Schemas
-        APITest -.->|Fixtures| Fixtures
-        UITest -.->|Utils| Utils
-        ObsTest -.->|Queries| PROM
-        ObsTest -.->|Reads| LOGS
-        ObsTest -.->|Validates| TRACE
-    end
-    
-    subgraph "CI/CD Pipeline"
-        GH["GitHub Actions"]
-        REPORT["📋 Reports<br/>Playwright HTML<br/>Allure<br/>Performance Metrics"]
-        ARTIFACT["📦 Artifacts<br/>Screenshots<br/>Videos<br/>Logs"]
-    end
-    
-    UITest -->|Validates| UI
-    APITest -->|Validates| API
-    EventTest -->|Validates| KAFKA
-    SecTest -->|Validates| API
-    PerfTest -->|Load Tests| API
-    ChaosTest -->|Failure Sim| API
-    
-    UITest -->|Trigger| GH
-    APITest -->|Trigger| GH
-    EventTest -->|Trigger| GH
-    SecTest -->|Trigger| GH
-    PerfTest -->|Trigger| GH
-    ChaosTest -->|Trigger| GH
-    ObsTest -->|Trigger| GH
-    
-    GH -->|Generates| REPORT
-    GH -->|Stores| ARTIFACT
-    
-    style UITest fill:#e1f5ff
-    style APITest fill:#e1f5ff
-    style EventTest fill:#e1f5ff
-    style SecTest fill:#fff3e0
-    style PerfTest fill:#fce4ec
-    style ChaosTest fill:#f3e5f5
-    style ObsTest fill:#e8f5e9
-    
-    style UI fill:#fff9c4
-    style API fill:#fff9c4
-    style KAFKA fill:#fff9c4
-    style PROM fill:#ffccbc
-    style LOGS fill:#ffccbc
-    style TRACE fill:#ffccbc
-```
-
-### Architecture Layers Explained
-
-**System Under Test (Yellow)**
-- Frontend UI, REST APIs, Kafka event streams, and data persistence
-- This is the distributed system the platform validates
-
-**Observability Stack (Orange)**
-- Prometheus metrics, centralized logging, and distributed tracing
-- Tests verify that monitoring and alerting are correctly configured
-
-**Test Automation Platform (Blue/Pink/Green)**
-- **Test Layers**: Seven distinct test suites (UI, API, Events, Security, Performance, Chaos, Observability)
-- **Framework Components**: Shared utilities, Page Objects, API clients, schemas, fixtures, and helpers
-- Each test layer validates a specific aspect of the system
-
-**CI/CD Pipeline (Gray)**
-- GitHub Actions orchestrates test execution
-- Generates HTML reports and uploads artifacts for review
-
-All test layers run in parallel during CI/CD, and each test has access to shared framework components for consistency and maintainability.
-
----
-
 ## Why This Project Exists
 
 Modern applications are distributed systems composed of UI clients, APIs, and event-driven services.
@@ -145,8 +22,9 @@ This project demonstrates how a modern quality engineering platform validates sy
 • Performance and scalability testing using k6  
 • Observability and SLO validation using metrics  
 • Infrastructure validation including Kubernetes manifests  
-
 The goal is to demonstrate how automation testing integrates into modern cloud-native architectures.
+
+---
 
 **🎯 What This Showcases:**
 - ✅ Advanced Page Object Model (POM) patterns
@@ -638,30 +516,6 @@ This repository demonstrates modern testing strategies used for validating distr
 • Reusable testing utilities including API clients, schema validators, and test fixtures  
 • Robust execution strategies including retries, timeouts, structured logging, and error handling
 
----
-## Technology Stack
-
-Automation
-• Playwright  
-• Jest  
-• TypeScript  
-
-API Testing
-• Axios  
-• Joi schema validation  
-
-Messaging
-• Kafka event testing  
-
-Performance
-• k6 load testing  
-
-Infrastructure
-• Docker  
-• Kubernetes  
-
-CI/CD
-• GitHub Actions
 ---
 ## Contributing
 

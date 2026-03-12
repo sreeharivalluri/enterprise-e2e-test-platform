@@ -7,6 +7,7 @@
 A production-grade automation testing framework demonstrating advanced quality engineering practices for modern distributed systems.
 
 Built with Playwright, Jest, k6, and TypeScript.
+---
 ## Why This Project Exists
 
 Modern applications are distributed systems composed of UI clients, APIs, and event-driven services.
@@ -22,7 +23,7 @@ This project demonstrates how a modern quality engineering platform validates sy
 • Performance and scalability testing using k6  
 • Observability and SLO validation using metrics  
 • Infrastructure validation including Kubernetes manifests  
-
+---
 The goal is to demonstrate how automation testing integrates into modern cloud-native architectures.
 
 **🎯 What This Showcases:**

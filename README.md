@@ -1,4 +1,4 @@
-# Enterprise E2E Test Automation Framework
+# Enterprise Test Automation Platform for Distributed Systems
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/yourusername/yourrepo/e2e-tests.yml?branch=main)](https://github.com/yourusername/yourrepo/actions)
 [![License](https://img.shields.io/github/license/yourusername/yourrepo)](LICENSE)
@@ -7,6 +7,23 @@
 A production-grade automation testing framework demonstrating advanced quality engineering practices for modern distributed systems.
 
 Built with Playwright, Jest, k6, and TypeScript.
+## Why This Project Exists
+
+Modern applications are distributed systems composed of UI clients, APIs, and event-driven services.
+
+Traditional UI automation alone is insufficient to validate reliability across these systems.
+
+This project demonstrates how a modern quality engineering platform validates system behavior across multiple layers:
+
+• UI workflows using Playwright automation  
+• API contract validation using schema checks  
+• Event-driven architecture validation using Kafka tests  
+• Security and vulnerability validation  
+• Performance and scalability testing using k6  
+• Observability and SLO validation using metrics  
+• Infrastructure validation including Kubernetes manifests  
+
+The goal is to demonstrate how automation testing integrates into modern cloud-native architectures.
 
 **🎯 What This Showcases:**
 - ✅ Advanced Page Object Model (POM) patterns
@@ -439,6 +456,22 @@ This framework tests **mock services** maintained in a separate repository:
 ✅ **Cloud-Ready** – K8s, multi-environment support  
 
 ---
+## Architecture Overview
+
+The automation platform validates a distributed application across multiple layers.
+
+Testing is executed through:
+
+• UI automation validating user workflows  
+• API tests validating service contracts  
+• Event-driven tests validating Kafka message streams  
+• Security tests validating authentication and injection protection  
+• Performance tests validating system scalability  
+• Observability tests validating metrics and SLO thresholds  
+
+This layered architecture ensures that both functional behavior and operational reliability are validated.
+
+---
 
 ## 📝 Example: Adding a New Test
 
@@ -470,20 +503,54 @@ npm run test:ui
 
 ---
 
-## 🎯 Portfolio Talking Points
+## Engineering Highlights
 
-When reviewing this repo with recruiters, highlight:
+This repository demonstrates modern testing strategies used for validating distributed systems.
 
-1. **"I built a scalable test framework"** – 65+ tests, organized by concern
-2. **"I use production-grade patterns"** – POM, DRY, SOLID principles
-3. **"I think beyond UI testing"** – API, events, security, performance, chaos
-4. **"I validate SLOs"** – Performance isn't just feature-complete, it's performant
-5. **"I understand infrastructure"** – K8s, CI/CD integration
-6. **"I write maintainable code"** – Reusable clients, schemas, fixtures
-7. **"I handle real-world scenarios"** – Retries, timeouts, error handling, logging
+• Scalable automation framework with 65+ automated scenarios organized by testing concern  
+• Production-grade architecture using Page Object Model and reusable modules  
+• Multi-layer testing covering UI, APIs, event-driven systems, security, performance, and resilience  
+• Observability validation including metrics and SLO verification  
+• Infrastructure-aware testing including Kubernetes validation and CI/CD integration  
+• Reusable testing utilities including API clients, schema validators, and test fixtures  
+• Robust execution strategies including retries, timeouts, structured logging, and error handling
 
 ---
+## Technology Stack
 
+Automation
+• Playwright  
+• Jest  
+• TypeScript  
+
+API Testing
+• Axios  
+• Joi schema validation  
+
+Messaging
+• Kafka event testing  
+
+Performance
+• k6 load testing  
+
+Infrastructure
+• Docker  
+• Kubernetes  
+
+CI/CD
+• GitHub Actions
+---
+## Contributing
+
+Contributions are welcome.
+
+To add new tests:
+
+1. Create or extend page objects
+2. Implement tests in the appropriate suite
+3. Ensure tests follow existing architecture patterns
+4. Run the full test suite before submitting changes
+----
 ## 📄 License
 
 MIT License

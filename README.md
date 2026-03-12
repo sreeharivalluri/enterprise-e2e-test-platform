@@ -23,8 +23,9 @@ This project demonstrates how a modern quality engineering platform validates sy
 • Performance and scalability testing using k6  
 • Observability and SLO validation using metrics  
 • Infrastructure validation including Kubernetes manifests  
----
 The goal is to demonstrate how automation testing integrates into modern cloud-native architectures.
+
+---
 
 **🎯 What This Showcases:**
 - ✅ Advanced Page Object Model (POM) patterns

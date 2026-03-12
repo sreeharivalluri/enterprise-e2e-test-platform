@@ -7,7 +7,7 @@
 A production-grade automation testing framework demonstrating advanced quality engineering practices for modern distributed systems.
 
 Built with Playwright, Jest, k6, and TypeScript.
----
+
 ## Why This Project Exists
 
 Modern applications are distributed systems composed of UI clients, APIs, and event-driven services.

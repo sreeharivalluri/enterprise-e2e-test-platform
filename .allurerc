@@ -1,0 +1,20 @@
+{
+  "allure": {
+    "profileName": "default",
+    "categories": [
+      {
+        "name": "Test Defects",
+        "matchedStatuses": ["failed"]
+      },
+      {
+        "name": "Product Defects",
+        "matchedStatuses": ["failed"],
+        "messageRegex": ".*NullPointerException.*"
+      },
+      {
+        "name": "Skipped Tests",
+        "matchedStatuses": ["skipped"]
+      }
+    ]
+  }
+}

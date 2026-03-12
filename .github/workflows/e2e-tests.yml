@@ -1,0 +1,120 @@
+name: E2E Test Suite
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    services:
+      frontend:
+        image: node:18-alpine
+      api:
+        image: node:18-alpine
+      kafka:
+        image: node:18-alpine
+      prometheus:
+        image: prom/prometheus:latest
+        ports:
+          - 9090:9090
+      grafana:
+        image: grafana/grafana:latest
+        ports:
+          - 3000:3000
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install Playwright browsers
+      run: npx playwright install --with-deps
+
+    - name: Install dependencies
+      run: npm run install:all
+
+    - name: Start Docker services
+      run: npm run docker:up
+      continue-on-error: true
+
+    - name: Wait for services
+      run: |
+        sleep 10
+        npx wait-on http://localhost:3000 http://localhost:3001 http://localhost:3003 http://localhost:3000 http://localhost:9090 --timeout 30000
+
+    - name: Export monitoring URLs
+      run: |
+        echo "GRAFANA_URL=http://localhost:3000" >> $GITHUB_ENV
+        echo "PROMETHEUS_URL=http://localhost:9090" >> $GITHUB_ENV
+
+    - name: Run API Tests
+      run: npm run test:api
+
+    - name: Run Kafka Tests
+      run: npm run test:kafka
+
+    - name: Run Contract Tests
+      run: npm run test:contracts
+
+    - name: Run Chaos Tests
+      run: npm run test:chaos
+
+    - name: Run Kubernetes Validation Tests
+      run: npm run test:kubernetes
+
+    - name: Run Feature Flag Tests
+      run: npm run test:feature-flag
+
+    - name: Run Distributed Tracing Tests
+      run: npm run test:tracing
+
+    - name: Run Security Tests
+      run: npm run test:security
+
+    - name: Run Observability Tests
+      run: npm run test:observability
+
+    - name: Run Performance Tests
+      run: npm run test:performance
+
+    - name: Upload Performance Results
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: performance-results
+        path: test-platform/results.json
+
+    - name: Run UI Tests
+      run: npm run test:ui
+
+    - name: Generate Allure Report
+      if: always()
+      run: npm run report:allure
+      continue-on-error: true
+
+    - name: Upload Test Reports
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-reports
+        path: test-platform/playwright-report/
+
+    - name: Upload Allure Report
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: allure-report
+        path: test-platform/allure-report/
+
+    - name: Cleanup
+      if: always()
+      run: npm run docker:down
+      continue-on-error: true

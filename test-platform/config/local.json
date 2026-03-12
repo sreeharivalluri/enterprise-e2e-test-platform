@@ -1,0 +1,11 @@
+{
+  "UI_URL": "http://localhost:3000",
+  "API_BASE_URL": "http://localhost:3001",
+  "KAFKA_URL": "http://localhost:3003",
+  "API_TIMEOUT": 30000,
+  "RETRY_COUNT": 3,
+  "RETRY_DELAY": 1000,
+  "PARALLEL_TEST_WORKERS": 4,
+  "GRAFANA_URL": "http://localhost:3000",
+  "PROMETHEUS_URL": "http://localhost:9090"
+}

@@ -1,0 +1,42 @@
+flowchart LR
+  UI[Frontend UI]\n  API[Mock API Service]\n  KAFKA[Kafka Service]\n  FF[Feature Flag Service]\n  OBS[Observability Platform]\n  MON[Monitoring]\n  TRACE[Tracing]
+
+  UI -->|HTTP| API
+  API -->|events| KAFKA
+  API -->|flags| FF
+
+  API --> OBS
+  KAFKA --> OBS
+  FF --> OBS
+
+  OBS --> MON
+  OBS --> TRACE
+
+  subgraph Test Platform
+    T_UI(UI Tests)
+    T_API(API Tests)
+    T_K(Kafka Tests)
+    T_CON(Contract Tests)
+    T_CHAOS(Chaos Tests)
+    T_PERF(Performance Tests)
+    T_OBS(Observability Tests)
+    T_SEC(Security Tests)
+    T_K8S(K8s Tests)
+    T_FLAG(Feature Flag Tests)
+    T_TRACE(Tracing Tests)
+  end
+
+  T_UI --> UI
+  T_API --> API
+  T_K --> KAFKA
+  T_CON --> API
+  T_CON --> KAFKA
+  T_CHAOS --> API
+  T_CHAOS --> KAFKA
+  T_PERF --> API
+  T_OBS --> OBS
+  T_SEC --> API
+  T_K8S --> K8S
+  T_FLAG --> FF
+  T_TRACE --> API
+  T_TRACE --> KAFKA

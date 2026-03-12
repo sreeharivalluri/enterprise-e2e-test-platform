@@ -1,0 +1,36 @@
+{
+  "env": {
+    "node": true
+  },
+  "extends": "eslint:recommended",
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "no-console": ["warn"],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "no-explicit-any": "off",
+    "prefer-const": "error",
+    "eqeqeq": ["error", "always"],
+    "curly": "error"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.spec.ts", "**/*.test.ts"],
+      "env": {
+        "jest": true
+      },
+      "rules": {
+        "no-console": "off"
+      }
+    }
+  ]
+}

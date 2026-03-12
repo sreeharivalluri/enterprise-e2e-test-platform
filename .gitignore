@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build artifacts
+dist/
+build/
+*.tsbuildinfo
+
+# Test artifacts
+coverage/
+test-results/
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Test reports
+allure-results/
+allure-report/
+playwright-report/
+html-report/
+screenshots/
+videos/
+
+# Docker
+docker-compose.override.yml
+.docker/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/

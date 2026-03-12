@@ -551,6 +551,18 @@ To add new tests:
 3. Ensure tests follow existing architecture patterns
 4. Run the full test suite before submitting changes
 ----
+## Versioning
+
+Current version: **1.0.0**
+
+Future improvements may include:
+
+• visual regression testing  
+• synthetic monitoring  
+• distributed tracing integration  
+• advanced contract testing
+
+---
 ## 📄 License
 
 MIT License
